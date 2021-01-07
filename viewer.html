@@ -31,10 +31,8 @@
     ], function(esriConfig, WebTileLayer, Map,
       Basemap, BasemapToggle, SceneView, KMLLayer, MapView
     ) {
-
+      // CORS for AWS
       esriConfig.request.corsEnabledServers.push("shaggyridge.battlefield.guide");
-
-      
    
       // Create a WebTileLayer with a third-party cached service
       var mapBaseLayer = new WebTileLayer({
@@ -45,7 +43,7 @@
 
       // Create a Basemap with the WebTileLayer. The thumbnailUrl will be used for
       // the image in the BasemapToggle widget.
-      var stamen = new Basemap({
+      var topo = new Basemap({
         baseLayers: [mapBaseLayer],
         title: "Terrain",
         id: "terrain",
@@ -79,7 +77,7 @@
         var toggle = new BasemapToggle({
           titleVisible: true,
           view: view,
-          nextBasemap: stamen
+          nextBasemap: topo
         });
 
         // Add widget to the top right corner of the view
